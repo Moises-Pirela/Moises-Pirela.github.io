@@ -1,4 +1,3 @@
-
 /* Icons */
 
 .right-arrow-icon {
@@ -50,7 +49,7 @@ a.icon-link:hover {
 @media only screen and (max-width: 800px) {
   .navbar {
     padding: 20px 20px;
-    background-color: white
+    background-color: darkgray
   }
 }
 
