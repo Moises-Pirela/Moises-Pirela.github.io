@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Moises Pirela</title>
+    <title>Blog - Moises Pirela</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap');
         body {
@@ -50,17 +50,35 @@
         }
         main {
             padding: 120px 20px;
-            max-width: 800px;
-            text-align: center;
+            max-width: 900px;
+            width: 100%;
         }
-        h1 {
-            font-size: 2.5em;
-            color: #A3B18A;
+        .blog-post {
+            background-color: #252A28;
+            border: 1px solid #3A3F3D;
+            border-radius: 8px;
             margin-bottom: 20px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        p {
-            font-size: 1.2em;
-            line-height: 1.8;
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .blog-post h2 {
+            margin: 0 0 10px;
+            color: #A3B18A;
+        }
+        .blog-post p {
+            margin: 0 0 10px;
+            line-height: 1.6;
+        }
+        .blog-post a {
+            color: #6DAA6C;
+            text-decoration: none;
+        }
+        .blog-post a:hover {
+            text-decoration: underline;
         }
         footer {
             width: 100%;
@@ -79,7 +97,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="logo.png" alt="Moises Pirela" class="logo"></a>
+        <img src="logo.png" alt="Moises Pirela" class="logo">
         <nav>
             <a href="about.html">About Me</a>
             <a href="projects.html">Projects</a>
@@ -89,20 +107,22 @@
     </header>
 
     <main>
-        <h1>About Me</h1>
-        <p>
-            Hello! I'm Moises Pirela, a gameplay engineer with nearly a decade of experience in crafting immersive gaming experiences. 
-            My expertise spans across Unreal Engine 5 and Unity3D, with a particular passion for implementing custom systems 
-            such as ECS (Entity-Component-System) architectures and procedural level generation.
-        </p>
-        <p>
-            Currently, I am developing <a href="https://store.steampowered.com/app/1466560/ExMORTALIS/" target="_blank">EXMORTALIS</a>, a first-person action RPG that blends cutting-edge technology 
-            with engaging gameplay. By day, I work for Azumo and Retroware, contributing to projects that push the boundaries of creativity.
-        </p>
-        <p>
-            Whether it’s building custom game mechanics, optimizing performance, or innovating through procedural systems, 
-            my goal is to create experiences that resonate with players worldwide.
-        </p>
+        <h1>Blog</h1>
+        <div class="blog-post">
+            <h2>Developing Exmortalis</h2>
+            <p>Discover the challenges and triumphs of building a first-person action RPG with a custom ECS architecture in Unreal Engine 5.</p>
+            <a href="exmortalis-development.html">Read more</a>
+        </div>
+        <div class="blog-post">
+            <h2>Procedural Level Design</h2>
+            <p>Learn about the intricacies of creating dynamic levels using random tile placement for engaging gameplay.</p>
+            <a href="procedural-level-design.html">Read more</a>
+        </div>
+        <div class="blog-post">
+            <h2>Unity vs Unreal: Choosing the Right Engine</h2>
+            <p>Weighing the pros and cons of two of the most popular game development engines for your next project.</p>
+            <a href="unity-vs-unreal.html">Read more</a>
+        </div>
     </main>
 
     <footer>
