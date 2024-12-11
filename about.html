@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moises Pirela - Gameplay Engineer</title>
+    <title>About Me - Moises Pirela</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap');
         body {
@@ -12,12 +12,11 @@
             font-family: 'Kanit', sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            justify-content: flex-start;
+            min-height: 100vh;
         }
         header {
             width: 100%;
@@ -31,15 +30,9 @@
             z-index: 1000;
         }
         .logo {
-            width: 500px; /* Increased size */
+            width: 200px;
             height: auto;
-            margin-left: 150px; 
-            margin-right: 550px;
-        }
-
-        .logoFooter {
-            width: 200px; /* Increased size */
-            height: auto;
+            margin-left: 20px;
         }
         nav {
             flex-grow: 1;
@@ -49,11 +42,25 @@
         nav a {
             color: #D4D4C4;
             text-decoration: none;
-            margin-left: 200px; /* Increased margin for separation */
+            margin: 0 15px;
             font-size: 1.2em;
         }
         nav a:hover {
             text-decoration: underline;
+        }
+        main {
+            padding: 120px 20px;
+            max-width: 800px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #A3B18A;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.8;
         }
         footer {
             width: 100%;
@@ -64,14 +71,9 @@
             bottom: 0;
             z-index: 1000;
         }
-        .parallax {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 5em;
-            color: rgba(163, 177, 138, 0.1);
-            pointer-events: none;
+        .logoFooter {
+            width: 150px;
+            height: auto;
         }
     </style>
 </head>
@@ -85,18 +87,26 @@
             <a href="contact.html">Contact</a>
         </nav>
     </header>
-    <div class="parallax" id="parallax">Moises Pirela</div>
+
+    <main>
+        <h1>About Me</h1>
+        <p>
+            Hello! I'm Moises Pirela, a gameplay engineer with nearly a decade of experience in crafting immersive gaming experiences. 
+            My expertise spans across Unreal Engine 5 and Unity3D, with a particular passion for implementing custom systems 
+            such as ECS (Entity-Component-System) architectures and procedural level generation.
+        </p>
+        <p>
+            Currently, I am developing <a href="https://store.steampowered.com/app/1466560/ExMORTALIS/">EXMORTALIS</a>, a first-person action RPG that blends cutting-edge technology 
+            with engaging gameplay. By day, I work for Azumo and Retroware, contributing to projects that push the boundaries of creativity.
+        </p>
+        <p>
+            Whether it’s building custom game mechanics, optimizing performance, or innovating through procedural systems, 
+            my goal is to create experiences that resonate with players worldwide.
+        </p>
+    </main>
+
     <footer>
         <p><img src="logo.png" alt="Moises Pirela" class="logoFooter"></p>
     </footer>
-    <script>
-        document.addEventListener('mousemove', (e) => {
-            const parallax = document.getElementById('parallax');
-            const speed = 0.1;
-            const x = (window.innerWidth / 2 - e.pageX) * speed;
-            const y = (window.innerHeight / 2 - e.pageY) * speed;
-            parallax.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
-        });
-    </script>
 </body>
 </html>
