@@ -1,102 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moises Pirela - Gameplay Engineer</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap');
-        body {
-            background-color: #1B1F1D;
-            color: #D4D4C4;
-            font-family: 'Kanit', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        header {
-            width: 100%;
-            padding: 20px;
-            background-color: #1B1F1D;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-        }
-        .logo {
-            width: 500px; /* Increased size */
-            height: auto;
-            margin-left: 150px; 
-            margin-right: 550px;
-        }
-
-        .logoFooter {
-            width: 200px; /* Increased size */
-            height: auto;
-        }
-        nav {
-            flex-grow: 1;
-            display: flex;
-            justify-content: space-around;
-        }
-        nav a {
-            color: #D4D4C4;
-            text-decoration: none;
-            margin-left: 200px; /* Increased margin for separation */
-            font-size: 1.2em;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            width: 100%;
-            padding: 10px;
-            background-color: #1B1F1D;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            z-index: 1000;
-        }
-        .parallax {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 5em;
-            color: rgba(163, 177, 138, 0.1);
-            pointer-events: none;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
-    <header>
-        <a href="index.html"><img src="logo.png" alt="Moises Pirela" class="logo"></a>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p style="margin-top: 20px; color: var(--accent-color);">Loading...</p>
+        </div>
+    </div>
+
+    <header id="header">
+        <a href="index.html">
+            <img src="logo.png" alt="Moises Pirela" class="logo">
+        </a>
         <nav>
-            <a href="about.html">About Me</a>
-            <a href="projects.html">Projects</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact.html">Contact</a>
+            <a href="#about">About Me</a>
+            <a href="#projects">Projects</a>
+            <a href="#blog">Blog</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
-    <div class="parallax" id="parallax">Moises Pirela</div>
+
+    <section class="hero">
+        <div id="particles" class="particles"></div>
+        <div class="parallax" id="parallax">Moises Pirela</div>
+        <div class="hero-content">
+            <h1>Moises Pirela</h1>
+            <h2>Gameplay Engineer & Creative Developer</h2>
+            <a href="#projects" class="cta-button">View My Work</a>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+        <div class="scroll-down" id="scrollDown">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <section id="projects" class="featured-projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-image exmortalis-image">
+                    <div class="project-overlay">
+                        <a href="https://store.steampowered.com/app/1466560/ExMORTALIS/?" class="cta-button">View Project</a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>ExMORTALIS</h3>
+                    <p>A first-person action RPG leveraging a custom ECS in Unreal Engine 5.</p>
+                    <div class="project-tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">UE5</span>
+                        <span class="tag">Game Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-image toxie-image">
+                    <div class="project-overlay">
+                        <a href="https://store.steampowered.com/app/2303850/Toxic_Crusaders/" class="cta-button">View Project</a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Toxic Crusaders</h3>
+                    <p>Sidescrolling beat 'em up in the Toxic Crusaders Universe in Unity.</p>
+                    <div class="project-tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-image mythic-image">
+                    <div class="project-overlay">
+                        <a href="https://store.steampowered.com/app/1710950/Mythic_Legions_Tactics/" class="cta-button">View Project</a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Mythic Legions: Tactics</h3>
+                    <p>A multiplayer tactial rpg set in the Mythic Legions Universe in Unity with custom server and custom ECS.</p>
+                    <div class="project-tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-image rome-image">
+                    <div class="project-overlay">
+                        <a href="https://store.steampowered.com/app/2303850/Toxic_Crusaders/" class="cta-button">View Project</a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Grow Empire: Rome</h3>
+                    <p>Sidescrolling beat 'em up in the Toxic Crusaders Universe in Unity.</p>
+                    <div class="project-tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">Mobile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="blog-section">
+        <h2>Latest from the Blog</h2>
+        <div class="blog-grid">
+            
+            <!-- Blog cards will be dynamically inserted here by JavaScript -->
+        
+        <div style="margin-top: 40px;">
+            <a href="blog-archive.html" class="cta-button">View All Posts</a>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-decoration decoration-1">{</div>
+        <div class="contact-decoration decoration-2">}</div>
+        
+        <div class="contact-container">
+            <div class="contact-header">
+                <h2>Get In Touch</h2>
+                <p>Have a project in mind or want to discuss gameplay engineering? I'd love to hear from you!</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3><span>📧</span> Email</h3>
+                        <p>The best way to reach me for professional inquiries.</p>
+                        <a href="mailto:hello@moisespirela.com">hello@moisespirela.com</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3><span>💼</span> Work</h3>
+                        <p>Currently available for freelance projects and consulting.</p>
+                        <a href="#">View my availability calendar</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3><span>🔗</span> Connect</h3>
+                        <p>Follow me on professional networks.</p>
+                        <div style="display: flex; gap: 15px; margin-top: 10px;">
+                            <div class="social-icons">
+                                <a href="https://www.linkedin.com/in/moises-pirela96/" target="_blank">
+                                    <img src="InBug-White.png" alt="LinkedIn" width="24" height="24">
+                                </a>
+                                <a href="https://github.com/Moises-Pirela" target="_blank"> 
+                                    <img src="github-mark-white.png" alt="GitHub" width="24" height="24">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p><img src="logo.png" alt="Moises Pirela" class="logoFooter"></p>
+        <div class="footer-content">
+            <div class="footer-column">
+                <img src="logo.png" alt="Moises Pirela" class="logoFooter">
+                <p style="margin-top: 15px;">Gameplay engineer specializing in physics, AI systems, and interactive
+                    mechanics for engaging player experiences.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul class="footer-links">
+                    <li><a href="https://www.linkedin.com/in/moises-pirela96/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://github.com/Moises-Pirela" target="_blank">GitHub</a></li>
+                    <li><a href="mailto:moisespirela95@gmail.com">Email</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/moises-pirela96/" target="_blank">
+                        <img src="InBug-White.png" alt="LinkedIn" width="24" height="24">
+                    </a>
+                    <a href="https://github.com/Moises-Pirela" target="_blank">
+                        <img src="github-mark-white.png" alt="GitHub" width="24" height="24">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Moises Pirela. All Rights Reserved.</p>
+        </div>
     </footer>
+
+    <!-- Include the markdown parser -->
+    <script src="js/markdown.js"></script>
+    
+    <!-- Include the blog functionality -->
+    <script src="js/blog.js"></script>
+
     <script>
-        document.addEventListener('mousemove', (e) => {
+        // Wait for page to load
+        window.addEventListener('load', () => {
+            // Hide loader after delay
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+
+            // Get elements
+            const header = document.getElementById('header');
             const parallax = document.getElementById('parallax');
-            const speed = 0.1;
-            const x = (window.innerWidth / 2 - e.pageX) * speed;
-            const y = (window.innerHeight / 2 - e.pageY) * speed;
-            parallax.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+            const scrollDown = document.getElementById('scrollDown');
+            const particlesContainer = document.getElementById('particles');
+
+            // Particle animation
+            class Particle {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedX = Math.random() * 1 - 0.5;
+                    this.speedY = Math.random() * 1 - 0.5;
+                    this.color = `rgba(163, 177, 138, ${Math.random() * 0.3})`;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    if (this.size > 0.2) this.size -= 0.01;
+                }
+
+                draw(ctx) {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            // Create canvas for particles
+            const canvas = document.createElement('canvas');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particlesContainer.appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+
+            let particles = [];
+            const particleCount = 100;
+
+            // Initialize particles
+            for (let i = 0; i < particleCount; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                particles.push(new Particle(x, y));
+            }
+
+            // Animation loop for particles
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw(ctx);
+
+                    // Check if particle is too small or out of bounds
+                    if (particles[i].size <= 0.2 ||
+                        particles[i].x < 0 ||
+                        particles[i].x > canvas.width ||
+                        particles[i].y < 0 ||
+                        particles[i].y > canvas.height) {
+                        // Replace with new particle
+                        const x = Math.random() * canvas.width;
+                        const y = Math.random() * canvas.height;
+                        particles[i] = new Particle(x, y);
+                    }
+                }
+
+                requestAnimationFrame(animateParticles);
+            }
+
+            // Start particles animation
+            animateParticles();
+
+            // Parallax effect for title
+            document.addEventListener('mousemove', (e) => {
+                const speed = 0.05;
+                const x = (window.innerWidth / 2 - e.pageX) * speed;
+                const y = (window.innerHeight / 2 - e.pageY) * speed;
+                parallax.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+            });
+
+            // Resize event for canvas
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+
+            // Scroll event for header
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Smooth scroll for navigation and scroll down button
+            document.querySelectorAll('nav a, .scroll-down').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
     </script>
+
+    <script>
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would normally send the form data to your server
+            // For now, we'll just show a success message
+            
+            const formElements = this.elements;
+            let isValid = true;
+            
+            // Simple validation
+            for (let i = 0; i < formElements.length; i++) {
+                if (formElements[i].type !== 'submit' && formElements[i].value.trim() === '') {
+                    isValid = false;
+                    formElements[i].style.borderColor = '#ff6b6b';
+                } else if (formElements[i].type !== 'submit') {
+                    formElements[i].style.borderColor = 'rgba(163, 177, 138, 0.3)';
+                }
+            }
+            
+            if (isValid) {
+                this.innerHTML = `
+                    <div style="text-align: center; padding: 30px 0;">
+                        <div style="font-size: 3rem; color: var(--accent-color); margin-bottom: 20px;">✓</div>
+                        <h3 style="margin-bottom: 15px; font-size: 1.5rem;">Message Sent!</h3>
+                        <p style="margin-bottom: 25px;">Thanks for reaching out. I'll get back to you soon.</p>
+                        <button type="button" class="submit-btn" onclick="resetForm()">Send Another Message</button>
+                    </div>
+                `;
+            }
+        });
+        
+        function resetForm() {
+            document.getElementById('contactForm').innerHTML = `
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            `;
+        }
+    </script>
 </body>
+
 </html>

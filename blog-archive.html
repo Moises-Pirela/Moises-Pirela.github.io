@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Archive - Moises Pirela</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/blog-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Archive page specific styles */
+        .archive-header {
+            text-align: center;
+            margin: 150px auto 40px;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .archive-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .archive-header p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .filter-section {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filter-section h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .filter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-label {
+            margin-right: 10px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .filter-select, .filter-search {
+            padding: 8px 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(163, 177, 138, 0.3);
+            border-radius: 5px;
+            color: var(--text-color);
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .filter-select:focus, .filter-search:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .filter-tag {
+            background-color: rgba(163, 177, 138, 0.2);
+            color: var(--accent-color);
+            padding: 5px 30px 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tag:hover {
+            background-color: rgba(163, 177, 138, 0.3);
+        }
+
+        .filter-tag::after {
+            content: '×';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+        }
+
+        .archive-content {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .archive-pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background-color: var(--highlight);
+            color: white;
+        }
+
+        .page-nav {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            height: 40px;
+        }
+
+        .page-nav:hover {
+            background-color: var(--highlight);
+            color: white;
+        }
+
+        .page-nav.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filter-controls {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .filter-group {
+                width: 100%;
+            }
+
+            .filter-select, .filter-search {
+                width: 100%;
+            }
+
+            .archive-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p style="margin-top: 20px; color: var(--accent-color);">Loading...</p>
+        </div>
+    </div>
+
+    <header id="header">
+        <a href="index.html">
+            <img src="logo.png" alt="Moises Pirela" class="logo">
+        </a>
+        <nav>
+            <a href="index.html#about">About Me</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#blog">Blog</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="archive-header">
+            <h1>Blog Archive</h1>
+            <p>Explore my thoughts, insights, and tutorials on gameplay engineering, game development, and creative coding.</p>
+        </div>
+
+        <div class="filter-section">
+            <h3>Filter Posts</h3>
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label class="filter-label" for="categoryFilter">Category:</label>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="Physics">Physics</option>
+                        <option value="AI">AI</option>
+                        <option value="Performance">Performance</option>
+                        <option value="Game Design">Game Design</option>
+                        <option value="Tutorials">Tutorials</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label" for="dateFilter">Sort By:</label>
+                    <select id="dateFilter" class="filter-select">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label" for="searchFilter">Search:</label>
+                    <input type="text" id="searchFilter" class="filter-search" placeholder="Search posts...">
+                </div>
+            </div>
+            <div class="filter-tags" id="activeTags">
+                <!-- Active filter tags will be added here dynamically -->
+            </div>
+        </div>
+
+        <div class="archive-content">
+            <div class="archive-grid" id="blogGrid">
+                <!-- Blog posts will be loaded here dynamically -->
+            </div>
+
+            <div class="archive-pagination" id="pagination">
+                <!-- Pagination will be added here dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <img src="logo.png" alt="Moises Pirela" class="logoFooter">
+                <p style="margin-top: 15px;">Gameplay engineer specializing in physics, AI systems, and interactive
+                    mechanics for engaging player experiences.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#about">About Me</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul class="footer-links">
+                    <li><a href="https://www.linkedin.com/in/moises-pirela96/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://github.com/Moises-Pirela" target="_blank">GitHub</a></li>
+                    <li><a href="mailto:moisespirela95@gmail.com">Email</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/moises-pirela96/" target="_blank">
+                        <img src="InBug-White.png" alt="LinkedIn" width="24" height="24">
+                    </a>
+                    <a href="https://github.com/Moises-Pirela" target="_blank">
+                        <img src="github-mark-white.png" alt="GitHub" width="24" height="24">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Moises Pirela. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Include the markdown parser -->
+    <script src="js/markdown.js"></script>
+    
+    <!-- Include the blog functionality -->
+    <script src="js/blog.js"></script>
+    
+    <script>
+        // Wait for page to load
+        window.addEventListener('load', () => {
+            // Hide loader after delay
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+
+            // Get header element
+            const header = document.getElementById('header');
+
+            // Scroll event for header
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+
+        // Handle blog archive functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize the blog manager
+            if (window.blogManager) {
+                // Load the blog posts
+                window.blogManager.loadPosts().then(() => {
+                    // Initialize archive functionality once posts are loaded
+                    initializeArchive();
+                });
+            }
+
+            function initializeArchive() {
+                // Get all posts from blog manager
+                const allPosts = window.blogManager.posts;
+                
+                // Set up filter state
+                const filterState = {
+                    category: '',
+                    sortBy: 'newest',
+                    search: '',
+                    page: 1,
+                    postsPerPage: 6,
+                    activeTags: []
+                };
+
+                // Initialize the filter controls
+                const categoryFilter = document.getElementById('categoryFilter');
+                const dateFilter = document.getElementById('dateFilter');
+                const searchFilter = document.getElementById('searchFilter');
+                const activeTagsContainer = document.getElementById('activeTags');
+
+                // Set up event listeners for filters
+                categoryFilter.addEventListener('change', () => {
+                    filterState.category = categoryFilter.value;
+                    if (filterState.category && !filterState.activeTags.includes(filterState.category)) {
+                        filterState.activeTags.push(filterState.category);
+                        updateActiveTagsDisplay();
+                    }
+                    filterState.page = 1;
+                    updateBlogDisplay();
+                });
+
+                dateFilter.addEventListener('change', () => {
+                    filterState.sortBy = dateFilter.value;
+                    updateBlogDisplay();
+                });
+
+                searchFilter.addEventListener('input', () => {
+                    filterState.search = searchFilter.value;
+                    filterState.page = 1;
+                    updateBlogDisplay();
+                });
+
+                // Function to handle removing filter tags
+                function removeTag(tag) {
+                    filterState.activeTags = filterState.activeTags.filter(t => t !== tag);
+                    if (tag === filterState.category) {
+                        filterState.category = '';
+                        categoryFilter.value = '';
+                    }
+                    updateActiveTagsDisplay();
+                    updateBlogDisplay();
+                }
+
+                // Function to update active tags display
+                function updateActiveTagsDisplay() {
+                    activeTagsContainer.innerHTML = '';
+                    filterState.activeTags.forEach(tag => {
+                        const tagElement = document.createElement('span');
+                        tagElement.className = 'filter-tag';
+                        tagElement.textContent = tag;
+                        tagElement.addEventListener('click', () => removeTag(tag));
+                        activeTagsContainer.appendChild(tagElement);
+                    });
+                }
+
+                // Function to filter and sort posts
+                function filterPosts() {
+                    let filteredPosts = [...allPosts];
+                    
+                    // Apply category filter
+                    if (filterState.category) {
+                        filteredPosts = filteredPosts.filter(post => 
+                            post.tags.includes(filterState.category)
+                        );
+                    }
+                    
+                    // Apply tag filters
+                    if (filterState.activeTags.length > 0) {
+                        filteredPosts = filteredPosts.filter(post => 
+                            filterState.activeTags.some(tag => post.tags.includes(tag))
+                        );
+                    }
+                    
+                    // Apply search filter
+                    if (filterState.search) {
+                        const searchTerm = filterState.search.toLowerCase();
+                        filteredPosts = filteredPosts.filter(post => 
+                            post.title.toLowerCase().includes(searchTerm) || 
+                            post.preview.toLowerCase().includes(searchTerm)
+                        );
+                    }
+                    
+                    // Apply sorting
+                    filteredPosts.sort((a, b) => {
+                        const dateA = new Date(a.date);
+                        const dateB = new Date(b.date);
+                        
+                        if (filterState.sortBy === 'newest') {
+                            return dateB - dateA;
+                        } else {
+                            return dateA - dateB;
+                        }
+                    });
+                    
+                    return filteredPosts;
+                }
+
+                // Function to paginate posts
+                function paginatePosts(posts) {
+                    const startIndex = (filterState.page - 1) * filterState.postsPerPage;
+                    const endIndex = startIndex + filterState.postsPerPage;
+                    
+                    return posts.slice(startIndex, endIndex);
+                }
+
+                // Function to generate pagination
+                function generatePagination(totalPosts) {
+                    const totalPages = Math.ceil(totalPosts / filterState.postsPerPage);
+                    const paginationContainer = document.getElementById('pagination');
+                    
+                    paginationContainer.innerHTML = '';
+                    
+                    if (totalPages <= 1) {
+                        return;
+                    }
+                    
+                    // Previous button
+                    const prevButton = document.createElement('a');
+                    prevButton.className = `page-nav ${filterState.page === 1 ? 'disabled' : ''}`;
+                    prevButton.innerHTML = '<i class="fas fa-chevron-left"></i> Prev';
+                    prevButton.href = '#';
+                    if (filterState.page !== 1) {
+                        prevButton.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            filterState.page--;
+                            updateBlogDisplay();
+                        });
+                    }
+                    paginationContainer.appendChild(prevButton);
+                    
+                    // Page numbers
+                    const maxVisiblePages = 5;
+                    let startPage = Math.max(1, filterState.page - Math.floor(maxVisiblePages / 2));
+                    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+                    
+                    if (endPage - startPage + 1 < maxVisiblePages) {
+                        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+                    }
+                    
+                    for (let i = startPage; i <= endPage; i++) {
+                        const pageButton = document.createElement('a');
+                        pageButton.className = `page-btn ${i === filterState.page ? 'active' : ''}`;
+                        pageButton.textContent = i;
+                        pageButton.href = '#';
+                        pageButton.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            if (i !== filterState.page) {
+                                filterState.page = i;
+                                updateBlogDisplay();
+                            }
+                        });
+                        paginationContainer.appendChild(pageButton);
+                    }
+                    
+                    // Next button
+                    const nextButton = document.createElement('a');
+                    nextButton.className = `page-nav ${filterState.page === totalPages ? 'disabled' : ''}`;
+                    nextButton.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
+                    nextButton.href = '#';
+                    if (filterState.page !== totalPages) {
+                        nextButton.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            filterState.page++;
+                            updateBlogDisplay();
+                        });
+                    }
+                    paginationContainer.appendChild(nextButton);
+                }
+
+                // Function to update the blog display
+                function updateBlogDisplay() {
+                    const blogGrid = document.getElementById('blogGrid');
+                    const filteredPosts = filterPosts();
+                    const paginatedPosts = paginatePosts(filteredPosts);
+                    
+                    blogGrid.innerHTML = '';
+                    
+                    if (paginatedPosts.length === 0) {
+                        const noResults = document.createElement('div');
+                        noResults.className = 'no-results';
+                        noResults.innerHTML = `
+                            <p>No posts found matching your criteria.</p>
+                            <button class="cta-button" style="margin-top: 20px;" onclick="location.reload()">
+                                Reset Filters
+                            </button>
+                        `;
+                        blogGrid.appendChild(noResults);
+                    } else {
+                        paginatedPosts.forEach(post => {
+                            blogGrid.innerHTML += post.toCard();
+                        });
+                    }
+                    
+                    generatePagination(filteredPosts.length);
+                }
+
+                // Initialize display
+                updateBlogDisplay();
+            }
+        });
+    </script>
+</body>
+
+</html>

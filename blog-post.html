@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - Moises Pirela</title>
+    <link rel="stylesheet" href="css/blog-styles.css">
+    <!-- Include the main site's CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p style="margin-top: 20px; color: var(--accent-color);">Loading...</p>
+        </div>
+    </div>
+
+    <header id="header">
+        <a href="index.html">
+            <img src="logo.png" alt="Moises Pirela" class="logo">
+        </a>
+        <nav>
+            <a href="index.html#about">About Me</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="blog-archive.html">Blog</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="blog-post-container">
+        <!-- Featured Image -->
+        <div class="blog-post-hero" id="blog-post-image"></div>
+        
+        <!-- Blog Header -->
+        <div class="blog-post-header" id="blog-post-header">
+            <!-- This will be filled by JavaScript -->
+        </div>
+        
+        <!-- Blog Content -->
+        <div class="blog-post-content" id="blog-post-content">
+            <!-- This will be filled by JavaScript -->
+        </div>
+        
+        <!-- Author Info -->
+        <div class="blog-post-author">
+            <div class="author-avatar">
+                <img src="author-image.jpg" alt="Moises Pirela">
+            </div>
+            <div class="author-info">
+                <h3>Moises Pirela</h3>
+                <p>Gameplay Engineer & Creative Developer with a passion for creating engaging interactive experiences. Specializing in physics systems, AI behavior, and procedural content generation.</p>
+                <div class="author-social">
+                    <a href="https://www.linkedin.com/in/moises-pirela96/" target="_blank">
+                        <img src="InBug-White.png" alt="LinkedIn" width="24" height="24">
+                    </a>
+                    <a href="https://github.com/Moises-Pirela" target="_blank">
+                        <img src="github-mark-white.png" alt="GitHub" width="24" height="24">
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Comment Section (optional) -->
+        <div class="blog-post-comments">
+            <h3>Comments</h3>
+            <p class="comments-message">Comments are currently disabled for this post.</p>
+        </div>
+        
+        <!-- Related Posts -->
+        <div class="related-posts" id="related-posts">
+            <!-- This will be filled by JavaScript -->
+        </div>
+        
+        <!-- Back to Blog -->
+        <div class="back-to-blog">
+            <a href="blog-archive.html" class="cta-button"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <img src="logo.png" alt="Moises Pirela" class="logoFooter">
+                <p style="margin-top: 15px;">Gameplay engineer specializing in physics, AI systems, and interactive
+                    mechanics for engaging player experiences.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#about">About Me</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul class="footer-links">
+                    <li><a href="https://www.linkedin.com/in/moises-pirela96/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://github.com/Moises-Pirela" target="_blank">GitHub</a></li>
+                    <li><a href="mailto:moisespirela95@gmail.com">Email</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/moises-pirela96/" target="_blank">
+                        <img src="InBug-White.png" alt="LinkedIn" width="24" height="24">
+                    </a>
+                    <a href="https://github.com/Moises-Pirela" target="_blank">
+                        <img src="github-mark-white.png" alt="GitHub" width="24" height="24">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Moises Pirela. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Include the markdown parser -->
+    <script src="js/markdown.js"></script>
+    
+    <!-- Include the blog functionality -->
+    <script src="js/blog.js"></script>
+    
+    <script>
+        // Wait for page to load
+        window.addEventListener('load', () => {
+            // Hide loader after delay
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+
+            // Get header element
+            const header = document.getElementById('header');
+
+            // Scroll event for header
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
