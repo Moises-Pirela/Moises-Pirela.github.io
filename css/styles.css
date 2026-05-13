@@ -763,6 +763,20 @@ textarea.form-control {
     background-color: #588157; /* Fallback color */
 }
 
+.bedroom-brawl-image {
+    background-image: url('../assets/images/bedroom-brawl.avif');
+    background-size: cover;
+    background-position: center;
+    background-color: #3a5a40;
+}
+
+.bedroom-brawl-rts-image {
+    background-image: url('../assets/images/bedroom-brawl.avif');
+    background-size: cover;
+    background-position: center;
+    background-color: #3a5a40;
+}
+
 
 @media (max-width: 768px) {
     .blog-grid {
