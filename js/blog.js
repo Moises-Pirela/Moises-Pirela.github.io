@@ -495,7 +495,7 @@ Performance optimization is an ongoing process throughout development. By making
         this.currentPost = post;
         
         // Update page title
-        document.title = `${post.title} - Moises Pirela`;
+        document.title = `${post.title} - Override Systems`;
         
         // Get blog content container
         const blogContentElement = document.getElementById('blog-post-content');

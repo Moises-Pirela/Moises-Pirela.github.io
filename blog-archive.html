@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Archive - Moises Pirela</title>
+    <title>Blog Archive - Override Systems</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/blog-styles.css">
     <!-- Font Awesome for icons -->
@@ -21,6 +21,8 @@
         .archive-header h1 {
             font-size: 3rem;
             margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .archive-header p {
@@ -34,7 +36,8 @@
             margin: 0 auto 40px;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            box-shadow: inset 0 0 0 1px rgba(var(--accent-rgb), 0.15);
+            clip-path: var(--clip-panel);
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
@@ -69,9 +72,9 @@
             padding: 8px 12px;
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(var(--accent-rgb), 0.3);
-            border-radius: 5px;
+            clip-path: var(--clip-panel-sm);
             color: var(--text-color);
-            font-family: 'Kanit', sans-serif;
+            font-family: var(--font-body);
         }
 
         .filter-select:focus, .filter-search:focus {
@@ -87,10 +90,11 @@
         }
 
         .filter-tag {
+            --notch-sm: 5px;
             background-color: rgba(var(--accent-rgb), 0.2);
             color: var(--accent-color);
             padding: 5px 30px 5px 15px;
-            border-radius: 20px;
+            clip-path: var(--clip-panel-sm);
             font-size: 0.8rem;
             cursor: pointer;
             position: relative;
@@ -129,7 +133,7 @@
             font-size: 1.2rem;
             color: var(--text-color);
             background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            clip-path: var(--clip-panel);
         }
 
         .archive-pagination {
@@ -146,7 +150,7 @@
             justify-content: center;
             align-items: center;
             background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 5px;
+            clip-path: var(--clip-panel-sm);
             color: var(--text-color);
             text-decoration: none;
             transition: all 0.3s ease;
@@ -159,7 +163,7 @@
 
         .page-nav {
             background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 5px;
+            clip-path: var(--clip-panel-sm);
             color: var(--text-color);
             text-decoration: none;
             transition: all 0.3s ease;
@@ -216,11 +220,11 @@
 
     <header id="header">
         <a href="index.html">
-            <img src="logo.png" alt="Moises Pirela" class="logo">
+            <img src="logo.png" alt="Override Systems" class="logo">
         </a>
         <nav>
-            <a href="index.html#about">About Me</a>
             <a href="index.html#projects">Projects</a>
+            <a href="gameasset.html">GameAsset</a>
             <a href="index.html#blog">Blog</a>
             <a href="index.html#contact">Contact</a>
         </nav>
@@ -229,7 +233,7 @@
     <main>
         <div class="archive-header">
             <h1>Blog Archive</h1>
-            <p>Explore my thoughts, insights, and tutorials on gameplay engineering, game development, and creative coding.</p>
+            <p>Insights, tutorials, and technical deep dives on gameplay engineering, game development, and creative coding.</p>
         </div>
 
         <div class="filter-section">
@@ -277,15 +281,15 @@
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <img src="logo.png" alt="Moises Pirela" class="logoFooter">
-                <p style="margin-top: 15px;">Gameplay engineer specializing in physics, AI systems, and interactive
-                    mechanics for engaging player experiences.</p>
+                <img src="logo.png" alt="Override Systems" class="logoFooter">
+                <p style="margin-top: 15px;">An independent game studio building physics-driven gameplay, AI
+                    systems, and developer tooling. Founded by Moises Pirela.</p>
             </div>
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="index.html#about">About Me</a></li>
                     <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="gameasset.html">GameAsset</a></li>
                     <li><a href="index.html#blog">Blog</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
@@ -295,7 +299,7 @@
                 <ul class="footer-links">
                     <li><a href="https://www.linkedin.com/in/moises-pirela96/" target="_blank">LinkedIn</a></li>
                     <li><a href="https://github.com/Moises-Pirela" target="_blank">GitHub</a></li>
-                    <li><a href="mailto:moisespirela95@gmail.com">Email</a></li>
+                    <li><a href="mailto:moisespirela@proton.me">Email</a></li>
                 </ul>
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/moises-pirela96/" target="_blank">
@@ -308,7 +312,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2025 Moises Pirela. All Rights Reserved.</p>
+            <p>&copy; 2026 Override Systems. All Rights Reserved.</p>
         </div>
     </footer>
 
