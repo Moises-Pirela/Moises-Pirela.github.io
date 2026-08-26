@@ -24,8 +24,8 @@
             <img src="logo.png" alt="Moises Pirela" class="logo">
         </a>
         <nav>
-            <a href="#about">About Me</a>
             <a href="#projects">Projects</a>
+            <a href="#gameasset">GameAsset</a>
             <a href="#blog">Blog</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -159,6 +159,49 @@
         </div>
     </section>
 
+    <section id="gameasset" class="gameasset-section">
+        <div class="gameasset-container">
+            <div class="gameasset-intro">
+                <span class="gameasset-eyebrow">Currently Building</span>
+                <h2>GameAsset</h2>
+                <p class="gameasset-tagline">Unity scenes shouldn't be Git's problem.</p>
+                <p>
+                    Unity scenes and prefabs are serialized YAML, which makes them miserable to diff, merge,
+                    and review through normal Git workflows. GameAsset is a local desktop tool that parses
+                    Unity assets into a real semantic representation, automatically merges the changes that
+                    are safe to merge, and shows you a clear visual decision for every genuine conflict, no
+                    manual YAML surgery required.
+                </p>
+                <ul class="gameasset-features">
+                    <li><i class="fa-solid fa-code-branch"></i> Semantic three-way merge with a full audit trail</li>
+                    <li><i class="fa-solid fa-bolt"></i> Launches automatically the moment Git hits a Unity conflict</li>
+                    <li><i class="fa-solid fa-eye"></i> Visual conflict resolution, no hand-edited YAML</li>
+                    <li><i class="fa-solid fa-lock"></i> 100% local: no cloud account, no uploaded project data</li>
+                </ul>
+                <div class="gameasset-tags project-tags">
+                    <span class="tag">Odin</span>
+                    <span class="tag">Dear ImGui</span>
+                    <span class="tag">Git Merge Driver</span>
+                    <span class="tag">Unity</span>
+                </div>
+                <div class="gameasset-cta">
+                    <a href="gameasset.html" class="cta-button">Learn More</a>
+                    <a href="https://forms.gle/LEbFsV6W8xPV3CVN7" target="_blank" class="cta-button secondary">Join the Alpha</a>
+                </div>
+            </div>
+            <div class="gameasset-screens">
+                <figure class="gameasset-screen">
+                    <img src="assets/images/gameasset-conflict-resolver.png" alt="GameAsset Conflict Resolver showing a Unity scene conflict with Keep Ours / Keep Theirs options">
+                    <figcaption>Conflict Resolver &mdash; semantic conflicts, resolved visually</figcaption>
+                </figure>
+                <figure class="gameasset-screen">
+                    <img src="assets/images/gameasset-cli.png" alt="GameAsset CLI showing a semantic diff of a Unity scene file">
+                    <figcaption>CLI &mdash; scriptable, human-readable semantic diffs</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
     <section id="blog" class="blog-section">
         <h2>Latest from the Blog</h2>
         <div class="blog-grid">
@@ -249,8 +292,8 @@
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#about">About Me</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#gameasset">GameAsset</a></li>
                     <li><a href="#blog">Blog</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -305,7 +348,7 @@
                     this.size = Math.random() * 2 + 1;
                     this.speedX = Math.random() * 1 - 0.5;
                     this.speedY = Math.random() * 1 - 0.5;
-                    this.color = `rgba(163, 177, 138, ${Math.random() * 0.3})`;
+                    this.color = `rgba(217, 149, 74, ${Math.random() * 0.3})`;
                 }
 
                 update() {
@@ -426,7 +469,7 @@
                     isValid = false;
                     formElements[i].style.borderColor = '#ff6b6b';
                 } else if (formElements[i].type !== 'submit') {
-                    formElements[i].style.borderColor = 'rgba(163, 177, 138, 0.3)';
+                    formElements[i].style.borderColor = 'rgba(217, 149, 74, 0.3)';
                 }
             }
             

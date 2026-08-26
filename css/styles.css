@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap');
 
 :root {
-    --primary-bg: #1B1F1D;
-    --text-color: #D4D4C4;
-    --accent-color: #A3B18A;
-    --highlight: #588157;
+    --primary-bg: #12141A;
+    --bg-rgb: 18, 20, 26;
+    --text-color: #E8E6DF;
+    --text-rgb: 232, 230, 223;
+    --accent-color: #D9954A;
+    --accent-rgb: 217, 149, 74;
+    --highlight: #A85F2A;
 }
 
 * {
@@ -26,7 +29,7 @@ body {
 header {
     width: 100%;
     padding: 20px;
-    background-color: rgba(27, 31, 29, 0.9);
+    background-color: rgba(var(--bg-rgb), 0.9);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,7 +42,7 @@ header {
 
 header.scrolled {
     padding: 10px 20px;
-    background-color: rgba(27, 31, 29, 0.95);
+    background-color: rgba(var(--bg-rgb), 0.95);
 }
 
 .logo {
@@ -146,13 +149,24 @@ nav a:hover:after {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+.cta-button.secondary {
+    background-color: transparent;
+    border: 1px solid rgba(var(--accent-rgb), 0.5);
+    color: var(--accent-color);
+}
+
+.cta-button.secondary:hover {
+    background-color: rgba(var(--accent-rgb), 0.1);
+    color: var(--accent-color);
+}
+
 .parallax {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 12vw;
-    color: rgba(163, 177, 138, 0.08);
+    color: rgba(var(--accent-rgb), 0.08);
     pointer-events: none;
     white-space: nowrap;
     z-index: 1;
@@ -227,7 +241,7 @@ nav a:hover:after {
 }
 
 .project-content p {
-    color: rgba(212, 212, 196, 0.8);
+    color: rgba(var(--text-rgb), 0.8);
     margin-bottom: 15px;
 }
 
@@ -238,7 +252,7 @@ nav a:hover:after {
 }
 
 .tag {
-    background-color: rgba(163, 177, 138, 0.2);
+    background-color: rgba(var(--accent-rgb), 0.2);
     color: var(--accent-color);
     padding: 5px 10px;
     border-radius: 20px;
@@ -248,7 +262,7 @@ nav a:hover:after {
 footer {
     width: 100%;
     padding: 30px;
-    background-color: rgba(27, 31, 29, 0.95);
+    background-color: rgba(var(--bg-rgb), 0.95);
     text-align: center;
     position: relative;
     z-index: 100;
@@ -355,7 +369,7 @@ footer {
 
 .contact-section {
     padding: 100px 20px;
-    background-color: rgba(27, 31, 29, 0.7);
+    background-color: rgba(var(--bg-rgb), 0.7);
     position: relative;
     overflow: hidden;
 }
@@ -367,7 +381,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(163, 177, 138, 0.05) 0%, rgba(27, 31, 29, 0) 70%);
+    background: radial-gradient(circle at center, rgba(var(--accent-rgb), 0.05) 0%, rgba(var(--bg-rgb), 0) 70%);
     z-index: 1;
 }
 
@@ -391,7 +405,7 @@ footer {
 .contact-header p {
     max-width: 600px;
     margin: 0 auto;
-    color: rgba(212, 212, 196, 0.8);
+    color: rgba(var(--text-rgb), 0.8);
 }
 
 .contact-content {
@@ -434,7 +448,7 @@ footer {
 }
 
 .contact-card p {
-    color: rgba(212, 212, 196, 0.9);
+    color: rgba(var(--text-rgb), 0.9);
     margin-bottom: 15px;
 }
 
@@ -475,7 +489,7 @@ footer {
     width: 100%;
     padding: 12px 15px;
     background-color: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(163, 177, 138, 0.3);
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
     border-radius: 5px;
     color: var(--text-color);
     font-family: 'Kanit', sans-serif;
@@ -516,7 +530,7 @@ textarea.form-control {
 .contact-decoration {
     position: absolute;
     font-size: 15vw;
-    color: rgba(163, 177, 138, 0.03);
+    color: rgba(var(--accent-rgb), 0.03);
     z-index: 1;
     pointer-events: none;
     user-select: none;
@@ -590,6 +604,155 @@ textarea.form-control {
 
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* GameAsset section styles */
+.gameasset-section {
+    padding: 100px 20px;
+    background-color: rgba(var(--bg-rgb), 0.7);
+    position: relative;
+    overflow: hidden;
+}
+
+.gameasset-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 20%, rgba(var(--accent-rgb), 0.06) 0%, rgba(var(--bg-rgb), 0) 60%);
+    z-index: 1;
+}
+
+.gameasset-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    text-align: left;
+}
+
+.gameasset-eyebrow {
+    display: inline-block;
+    color: var(--accent-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.gameasset-intro h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.gameasset-tagline {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+
+.gameasset-intro > p {
+    color: rgba(var(--text-rgb), 0.85);
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.gameasset-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.gameasset-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-color);
+}
+
+.gameasset-features i {
+    color: var(--accent-color);
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.gameasset-tags {
+    margin-bottom: 30px;
+}
+
+.gameasset-cta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.gameasset-cta .cta-button {
+    margin: 0;
+}
+
+.gameasset-screens {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.gameasset-screen {
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(var(--accent-rgb), 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.gameasset-screen:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    border-color: rgba(var(--accent-rgb), 0.4);
+}
+
+.gameasset-screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.gameasset-screen figcaption {
+    padding: 12px 18px;
+    font-size: 0.85rem;
+    color: rgba(var(--text-rgb), 0.7);
+    border-top: 1px solid rgba(var(--accent-rgb), 0.15);
+}
+
+@media (max-width: 900px) {
+    .gameasset-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .gameasset-features li {
+        justify-content: center;
+    }
+
+    .gameasset-tags {
+        justify-content: center;
+    }
+
+    .gameasset-cta {
+        justify-content: center;
     }
 }
 
@@ -718,7 +881,7 @@ textarea.form-control {
 }
 
 .blog-preview {
-    color: rgba(212, 212, 196, 0.8);
+    color: rgba(var(--text-rgb), 0.8);
     margin-bottom: 15px;
     flex-grow: 1;
 }
@@ -739,42 +902,42 @@ textarea.form-control {
     background-image: url('../assets/images/exmortalis.png');
     background-size: 185% auto;
     background-position: center;
-    background-color: #3a5a40; /* Fallback color */
+    background-color: #4A3220; /* Fallback color */
 }
 
 .toxie-image {
     background-image: url('../assets/images/toxic.jpg');
     background-size: cover;
     background-position: center;
-    background-color: #588157; /* Fallback color */
+    background-color: #5C3A1F; /* Fallback color */
 }
 
 .mythic-image {
     background-image: url('../assets/images/mythic.jpeg');
     background-size: cover;
     background-position: center;
-    background-color: #588157; /* Fallback color */
+    background-color: #5C3A1F; /* Fallback color */
 }
 
 .rome-image {
     background-image: url('../assets/images/rome.jpeg');
     background-size: cover;
     background-position: center;
-    background-color: #588157; /* Fallback color */
+    background-color: #5C3A1F; /* Fallback color */
 }
 
 .bedroom-brawl-image {
     background-image: url('../assets/images/bedroom-brawl.avif');
     background-size: cover;
     background-position: center;
-    background-color: #3a5a40;
+    background-color: #4A3220;
 }
 
 .bedroom-brawl-rts-image {
     background-image: url('../assets/images/bedroom-brawl.avif');
     background-size: cover;
     background-position: center;
-    background-color: #3a5a40;
+    background-color: #4A3220;
 }
 
 

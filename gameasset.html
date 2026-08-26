@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameAsset - Moises Pirela</title>
+    <meta name="description" content="GameAsset is a local desktop tool that semantically diffs, merges, and validates Unity scenes and prefabs through Git.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/gameasset-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p style="margin-top: 20px; color: var(--accent-color);">Loading...</p>
+        </div>
+    </div>
+
+    <header id="header">
+        <a href="index.html">
+            <img src="logo.png" alt="Moises Pirela" class="logo">
+        </a>
+        <nav>
+            <a href="index.html#projects">Projects</a>
+            <a href="gameasset.html">GameAsset</a>
+            <a href="index.html#blog">Blog</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="ga-hero">
+        <div class="ga-hero-content">
+            <span class="gameasset-eyebrow">Currently Building</span>
+            <h1>GameAsset</h1>
+            <p class="gameasset-tagline">Unity scenes shouldn't be Git's problem.</p>
+            <p class="ga-hero-lede">
+                Unity scenes and prefabs are serialized YAML, which makes them miserable to diff, merge, and
+                review through normal Git workflows. GameAsset parses them into a real semantic representation,
+                automatically merges the changes that are safe to merge, and shows you a clear visual decision
+                for every genuine conflict &mdash; no manual YAML surgery required.
+            </p>
+            <div class="ga-hero-cta">
+                <a href="https://forms.gle/LEbFsV6W8xPV3CVN7" target="_blank" class="cta-button">Join the Alpha</a>
+                <a href="#how-it-works" class="cta-button secondary">See How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ga-section">
+        <div class="ga-status"><span class="dot"></span> In closed alpha &mdash; built solo, tested on real Unity projects</div>
+        <div class="ga-overview">
+            <div>
+                <h2 style="font-size: 1.8rem; margin-bottom: 20px;">What it does</h2>
+                <p>
+                    GameAsset is a standalone desktop tool for Unity teams. It hooks into Git as a merge driver,
+                    so it opens automatically the moment a Unity asset conflict happens &mdash; not before, not
+                    manually. Safe changes merge on their own with a full audit trail; genuine conflicts are
+                    presented as a short, visual decision list instead of a wall of YAML.
+                </p>
+                <p>
+                    It's local-first by design: no cloud account, no uploaded project data, and no requirement
+                    to have Unity open to merge or validate a scene.
+                </p>
+                <div class="gameasset-tags project-tags">
+                    <span class="tag">Odin</span>
+                    <span class="tag">Dear ImGui</span>
+                    <span class="tag">Git Merge Driver</span>
+                    <span class="tag">Unity</span>
+                </div>
+            </div>
+            <ul class="gameasset-features">
+                <li><i class="fa-solid fa-code-branch"></i> Semantic three-way merge with a full audit trail</li>
+                <li><i class="fa-solid fa-bolt"></i> Launches automatically the moment Git hits a Unity conflict</li>
+                <li><i class="fa-solid fa-eye"></i> Visual conflict resolution, no hand-edited YAML</li>
+                <li><i class="fa-solid fa-diagram-project"></i> Understands nested prefabs and overrides</li>
+                <li><i class="fa-solid fa-shield-halved"></i> Validates results before Git continues</li>
+                <li><i class="fa-solid fa-lock"></i> 100% local: no cloud account, no uploaded project data</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="ga-section ga-alt-bg">
+        <div class="ga-section-header">
+            <h2>See it in action</h2>
+            <p>Real output from the actual tool &mdash; a semantic diff in the CLI, and a genuine conflict resolved in the desktop UI.</p>
+        </div>
+        <div class="ga-gallery">
+            <figure class="gameasset-screen">
+                <img src="assets/images/gameasset-cli.png" alt="GameAsset CLI showing a semantic diff of a Unity scene file">
+                <figcaption>CLI &mdash; scriptable, human-readable semantic diffs</figcaption>
+            </figure>
+            <figure class="gameasset-screen">
+                <img src="assets/images/gameasset-conflict-resolver.png" alt="GameAsset Conflict Resolver showing a Unity scene conflict with Keep Ours / Keep Theirs options">
+                <figcaption>Conflict Resolver &mdash; semantic conflicts, resolved visually</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="ga-section" id="how-it-works">
+        <div class="ga-section-header">
+            <h2>How it works</h2>
+            <p>The whole point is that you shouldn't have to think about it.</p>
+        </div>
+        <div class="ga-workflow">
+            <div class="ga-step">
+                <div class="ga-step-content">
+                    <h3>You run <code>git pull</code> or <code>git merge</code></h3>
+                    <p>Nothing changes about your normal Git workflow.</p>
+                </div>
+            </div>
+            <div class="ga-step">
+                <div class="ga-step-content">
+                    <h3>Git detects a Unity asset conflict</h3>
+                    <p>Registered as a Git merge driver for <code>.unity</code> and prefab files, so this happens automatically once set up.</p>
+                </div>
+            </div>
+            <div class="ga-step">
+                <div class="ga-step-content">
+                    <h3>GameAsset opens, only if needed</h3>
+                    <p>If there's nothing to decide, it resolves silently. If there is, it tells you exactly how many decisions are required.</p>
+                </div>
+            </div>
+            <div class="ga-step">
+                <div class="ga-step-content">
+                    <h3>Safe changes merge automatically</h3>
+                    <p>Every automatic decision is logged and auditable &mdash; nothing is ever silently discarded.</p>
+                </div>
+            </div>
+            <div class="ga-step">
+                <div class="ga-step-content">
+                    <h3>Genuine conflicts are shown visually</h3>
+                    <p>Semantic paths and values, not raw YAML blocks. Keep Ours, Keep Theirs, or set a custom value.</p>
+                </div>
+            </div>
+            <div class="ga-step">
+                <div class="ga-step-content">
+                    <h3>GameAsset validates the result</h3>
+                    <p>Structure, hierarchy, FileIDs, GUIDs, and references are checked before anything is written back.</p>
+                </div>
+            </div>
+            <div class="ga-step">
+                <div class="ga-step-content">
+                    <h3>Git continues</h3>
+                    <p>The merge completes with a scene Unity can open, no manual cleanup required.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ga-cta-banner ga-alt-bg">
+        <h2>Want to help shape it?</h2>
+        <p>GameAsset is in closed alpha on real Unity projects. If your team fights Unity merge conflicts, I'd like your feedback.</p>
+        <a href="https://forms.gle/LEbFsV6W8xPV3CVN7" target="_blank" class="cta-button">Join the Alpha</a>
+    </section>
+
+    <div class="ga-back-link">
+        <a href="index.html" class="cta-button secondary"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <img src="logo.png" alt="Moises Pirela" class="logoFooter">
+                <p style="margin-top: 15px;">Gameplay engineer specializing in physics, AI systems, and interactive
+                    mechanics for engaging player experiences.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="gameasset.html">GameAsset</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul class="footer-links">
+                    <li><a href="https://www.linkedin.com/in/moises-pirela96/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://github.com/Moises-Pirela" target="_blank">GitHub</a></li>
+                    <li><a href="mailto:moisespirela@proton.me">Email</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/moises-pirela96/" target="_blank">
+                        <img src="InBug-White.png" alt="LinkedIn" width="24" height="24">
+                    </a>
+                    <a href="https://github.com/Moises-Pirela" target="_blank">
+                        <img src="github-mark-white.png" alt="GitHub" width="24" height="24">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Moises Pirela. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
